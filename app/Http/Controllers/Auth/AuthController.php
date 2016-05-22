@@ -7,66 +7,92 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Illuminate\Http\Response;
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
     /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
+     * the model instance
+     * @var User
      */
-    protected $redirectTo = '/';
-
+    protected $user; 
+    /**
+     * The Guard implementation.
+     *
+     * @var Authenticator
+     */
+    protected $auth;
+ 
     /**
      * Create a new authentication controller instance.
      *
+     * @param  Authenticator  $auth
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth, User $user)
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->user = $user; 
+        $this->auth = $auth;
+ 
+        $this->middleware('guest', ['except' => ['getLogout']]); 
     }
-
+ 
     /**
-     * Get a validator for an incoming registration request.
+     * Show the application registration form.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return Response
      */
-    protected function validator(array $data)
+    public function getRegister()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return view('auth.register');
     }
-
+ 
     /**
-     * Create a new user instance after a valid registration.
+     * Handle a registration request for the application.
      *
-     * @param  array  $data
-     * @return User
+     * @param  RegisterRequest  $request
+     * @return Response
      */
-    protected function create(array $data)
+    public function postRegister(RegisterRequest $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        //code for registering a user goes here.
+        $this->auth->login($this->user); 
+        return redirect('/dash-board'); 
+    }
+ 
+    /**
+     * Show the application login form.
+     *
+     * @return Response
+     */
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+ 
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  LoginRequest  $request
+     * @return Response
+     */
+    public function postLogin(LoginRequest $request)
+    {
+        if ($this->auth->attempt($request->only('email', 'password')))
+        {
+            return Response::json(['code' => 200])
+        }
+        return Response::json(['code' => 401, 'message' => 'Authentication was failed'])
+    }
+ 
+    /**
+     * Log the user out of the application.
+     *
+     * @return Response
+     */
+    public function getLogout()
+    {
+        $this->auth->logout();
+ 
+        return redirect('/');
     }
 }
