@@ -79,9 +79,9 @@ class AuthController extends Controller
     {
         if ($this->auth->attempt($request->only('email', 'password')))
         {
-            return Response::json(['code' => 200])
+            return Response::json(['code' => 200]);
         }
-        return Response::json(['code' => 401, 'message' => 'Authentication was failed'])
+        return Response::json(['code' => 401, 'message' => 'Authentication was failed']);
     }
  
     /**
