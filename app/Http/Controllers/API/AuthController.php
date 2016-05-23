@@ -97,6 +97,6 @@ class AuthController extends Controller
         }
 
         $this->create($request->all());
-        response()->json(['code' => 200], 200);
+        return response()->json(['code' => 200], 200);
     }
 }
