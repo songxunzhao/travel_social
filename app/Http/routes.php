@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('api/user/login', 'Auth\AuthController@postLogin');
-Route::post('api/user/register', 'Auth\AuthController@postRegister');
+
+Route::group(['prefix'=> 'api', 'middleware' => ['api']], function () {
+    // API routes
+    Route::post('user/login', 'API\AuthController@signin');
+    Route::post('user/register', 'API\AuthController@register');
+});
 
