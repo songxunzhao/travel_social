@@ -97,8 +97,7 @@ class ProfileController extends Controller
      *                  ref="#/definitions/User"
      *              )
      *         )
-     *      ),
-     *      security={{"Bearer":{}}}
+     *      )
      * )
      */
     public function index(Request $request) {

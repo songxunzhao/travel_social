@@ -179,12 +179,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -259,13 +254,6 @@
             "xml": {
                 "name": "User"
             }
-        }
-    },
-    "securityDefinitions": {
-        "Bearer": {
-            "type": "apiKey",
-            "name": "token",
-            "in": "query"
         }
     }
 }
