@@ -26,6 +26,35 @@ class ProfileController extends Controller
     		'lng' => 'numeric',
     	]);
     }
+    /**
+     * @SWG\Post(
+     *     path="api/user/profile",
+     *     tags={"User"},
+     *     summary="Profile",
+     *     description="Get user profile",
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *         name="data",
+     *         in="body",
+     *         required=true,
+     *         @SWG\Schema(ref="#/definitions/User")
+     *     ),
+     *     @SWG\Response(
+     *          response="200", 
+     *          description="",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="code",
+     *                  type="integer",
+     *                  default=200,
+     *                  description="Response code"
+     *               )
+     *         )
+     *      )
+     * )
+     */
     public function store(Request $request) {
         $user = $request->user();
     	$validator = $this->validator($request->all());
@@ -43,7 +72,35 @@ class ProfileController extends Controller
         $user->update($request_data);
         return response()->json(['code' => 200]);
     }
-
+    /**
+     * @SWG\Get(
+     *     path="api/user/profile",
+     *     tags={"User"},
+     *     summary="Profile",
+     *     description="Get user profile",
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *     @SWG\Response(
+     *          response="200", 
+     *          description="",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="code",
+     *                  type="integer",
+     *                  default=200,
+     *                  description="Response code"
+     *               ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  description="Response data",
+     *                  ref="#/definitions/User"
+     *              )
+     *         )
+     *      ),
+     *      security={{"Bearer":{}}}
+     * )
+     */
     public function index(Request $request) {
         $user = $request->user();
         return response()->json(['code' => 200, 'data' => $user->toArray()]);

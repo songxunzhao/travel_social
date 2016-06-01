@@ -19,21 +19,4 @@
  *     )
  * )
  */
-/**
- * @SWG\Definition(
- *	type="object",
- *	definition="response",
- *	@SWG\Property(
- *		property="code",
- *		type="integer",
- *		default=200,
- *		description="Response code"
- *	),
- *	@SWG\Property(
- *		property="data",
- *		type="object",
- *		description="Response data"
- *	)
- * )
- */
 ?>

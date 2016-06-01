@@ -62,11 +62,26 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/response"
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "data": {
+                                    "description": "Response data",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "complete_profile": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
-                            ]
+                            },
+                            "type": "object"
                         }
                     }
                 }
@@ -132,22 +147,125 @@
                     }
                 }
             }
+        },
+        "api/user/profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Profile",
+                "description": "Get user profile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "data": {
+                                    "description": "Response data",
+                                    "$ref": "#/definitions/User"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Profile",
+                "description": "Get user profile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
-        "response": {
+        "User": {
             "properties": {
-                "code": {
-                    "description": "Response code",
-                    "type": "integer",
-                    "default": 200
+                "name": {
+                    "description": "",
+                    "type": "string"
                 },
-                "data": {
-                    "description": "Response data",
-                    "type": "object"
+                "age": {
+                    "description": "",
+                    "type": "integer"
+                },
+                "location": {
+                    "description": "",
+                    "type": "string"
+                },
+                "lat": {
+                    "description": "",
+                    "type": "number",
+                    "format": "float"
+                },
+                "lng": {
+                    "description": "",
+                    "type": "number",
+                    "format": "float"
+                },
+                "job_name": {
+                    "description": "",
+                    "type": "string"
                 }
             },
-            "type": "object"
+            "xml": {
+                "name": "User"
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "token",
+            "in": "query"
         }
     }
 }

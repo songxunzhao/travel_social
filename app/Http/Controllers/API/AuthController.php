@@ -58,11 +58,26 @@ class AuthController extends Controller
      *          response="200", 
      *          description="",
      *          @SWG\Schema(
-     *              allOf={
-     *                  @SWG\Schema(
-     *                      ref="#/definitions/response"
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="code",
+     *                  type="integer",
+     *                  default=200,
+     *                  description="Response code"
+     *               ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  description="Response data",
+     *                  @SWG\Property(
+     *                      property="token",
+     *                      type="string"
+     *                  ),
+     *                  @SWG\Property(
+     *                      property="complete_profile",
+     *                      type="boolean"
      *                  )
-     *              }
+     *              )
      *         )
      *      )
      * )
@@ -86,10 +101,18 @@ class AuthController extends Controller
                 500);
         }
 
+        $user = JWTAuth::toUser($token);
+
+        if((is_null($user->name) || $user->name == "") ||
+            ($user->age == 0) ||
+            (is_null($user->job_name) || $user->job_name == ""))
+            $complete_profile = false;
+        else
+            $complete_profile = true;
         // all good so return the token
         return response()->json([
             'code' => 200,
-            'data' => ['token' => $token]]);
+            'data' => ['token' => $token, 'complete_profile' => $complete_profile]]);
     }
     
     public function getAuthenticatedUser()
@@ -165,13 +188,13 @@ class AuthController extends Controller
      *          response="200", 
      *          description="",
      *          @SWG\Schema(
-     *             type="object",
+     *              type="object",
      *              @SWG\Property(
-     *              property="code",
-     *              type="integer",
-     *              default=200,
-    *               description="Response code"
-     *          )
+     *                  property="code",
+     *                  type="integer",
+     *                  default=200,
+     *                  description="Response code"
+     *               )
      *         )
      *      )
      * )
