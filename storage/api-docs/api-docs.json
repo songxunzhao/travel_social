@@ -1,0 +1,153 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Habbis mobile API",
+        "description": "This is APIs for habbis social mobile app",
+        "termsOfService": "This API document is belong to habbis mobile team.",
+        "contact": {
+            "email": "songxunzhao1991@gmail.com"
+        },
+        "license": {
+            "name": "Private License",
+            "url": ""
+        },
+        "version": "1.0.0"
+    },
+    "host": "198.71.54.50",
+    "basePath": "/habbis/public/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "api/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "description": "Login user by email and password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Login data",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "email",
+                                "password"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "description": "User's email",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "User's password, must be longer than 8 in length",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "api/user/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register",
+                "description": "Register user. name, email and password fields are required",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Register data",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "name",
+                                "email",
+                                "password"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "description": "User's name",
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "description": "User's email",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "User's password, must be longer than 8 in length",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "response": {
+            "properties": {
+                "code": {
+                    "description": "Response code",
+                    "type": "integer",
+                    "default": 200
+                },
+                "data": {
+                    "description": "Response data",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

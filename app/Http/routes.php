@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Route::group(['prefix'=> 'api', 'middleware' => ['api']], function () {
     // API routes
-    Route::post('user/login', 'API\AuthController@signin');
+    Route::post('user/login', 'API\AuthController@login');
     Route::post('user/register', 'API\AuthController@register');
+    Route::group(['middleware' => 'jwt.auth'], function() {
+    	Route::resource('user/profile', 'API\ProfileController');
+    	Route::post('files', 'API\FileController@upload');
+    });
 });

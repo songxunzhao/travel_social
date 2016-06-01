@@ -160,6 +160,7 @@ return [
         * JWT Provider
         */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        \L5Swagger\L5SwaggerServiceProvider::class,
     ],
 
     /*
