@@ -10,6 +10,45 @@ use App\Http\Controllers\Controller;
 class FileController extends Controller
 {
     //
+    /**
+     * @SWG\Post(
+     *     path="api/files",
+     *     tags={"Files"},
+     *     summary="Upload file, return url",
+     *     description="Upload file",
+     *     consumes={"multipart/form-data"},
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *         name="file",
+     *         in="formData",
+     *         required=true,
+     *         type="file"
+     *     ),
+     *     @SWG\Response(
+     *          response="200", 
+     *          description="",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="code",
+     *                  type="integer",
+     *                  default=200,
+     *                  description="Response code"
+     *               ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  description="Response code",
+     *                  @SWG\Property(
+     *                      property="url",
+     *                      type="string",
+     *                      description="Link to uploaded image"
+     *                  )
+     *               )
+     *         )
+     *      )
+     * )
+     */
    	public function upload(Request $request) {
         if ($request->hasFile('file')) {
             $orignal_file_name = $request->files->get('file')->getClientOriginalName();

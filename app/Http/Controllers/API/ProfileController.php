@@ -23,7 +23,7 @@ class ProfileController extends Controller
     		'age' => 'numeric',
     		'location' => 'required',
     		'lat' => 'numeric',
-    		'lng' => 'numeric',
+    		'lng' => 'numeric'
     	]);
     }
     /**
@@ -63,12 +63,7 @@ class ProfileController extends Controller
     								'message' => 'Bad request format', 
     								'errors' => $validator->errors()]);
     	}
-        $request_data = $request->only(['name', 
-                                        'age', 
-                                        'location', 
-                                        'lat', 
-                                        'lng', 
-                                        'job_name']);
+        $request_data = $request->except('email', 'password');
         $user->update($request_data);
         return response()->json(['code' => 200]);
     }
@@ -102,6 +97,6 @@ class ProfileController extends Controller
      */
     public function index(Request $request) {
         $user = $request->user();
-        return response()->json(['code' => 200, 'data' => $user->toArray()]);
+        return response()->json(['code' => 200, 'data' => $user->toProfileArray()]);
     }
 }

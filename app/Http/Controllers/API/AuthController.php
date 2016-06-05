@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\UserInvite;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -207,10 +208,18 @@ class AuthController extends Controller
             ]);
         if($validator->fails()) {
             return response()->json(['code' => 200, 
-                'error' => $validator->errors()]);
+                'errors' => $validator->errors()]);
         }
 
-        $this->create($request->all());
+        $email = $request->input('email');
+        $invite = UserInvite::where('email', $email)->first();
+        if(!$invite){
+            return response()->json(['code' => 403, 'message' => 'You must get invitation to register'], 403);
+        }
+        $user = $this->create($request->all());
+        $invite->registered_id = $user->id;
+        $invite->save();
+        
         return response()->json(['code' => 200], 200);
     }
 }

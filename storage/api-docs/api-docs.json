@@ -13,7 +13,7 @@
         },
         "version": "1.0.0"
     },
-    "host": "198.71.54.50",
+    "host": "localhost",
     "basePath": "/habbis/public/",
     "schemes": [
         "http"
@@ -148,6 +148,270 @@
                 }
             }
         },
+        "api/event": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get event list",
+                "description": "Get event list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Event"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Create event",
+                "description": "Create event",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Register data",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "api/event/{event_id}/attend": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Attend event",
+                "description": "Attend event",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "Event id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "api/event/{event_id}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get event detail",
+                "description": "Get event detail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "Event id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "data": {}
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "api/files": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload file, return url",
+                "description": "Upload file",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "data": {
+                                    "description": "Response code",
+                                    "properties": {
+                                        "url": {
+                                            "description": "Link to uploaded image",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "api/user/invite": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Invite user by email",
+                "description": "Invite user by email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Register data",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "email"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "description": "Invitee's email",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "default": 200
+                                },
+                                "message": {
+                                    "description": "Response message",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "api/user/profile": {
             "get": {
                 "tags": [
@@ -222,6 +486,40 @@
         }
     },
     "definitions": {
+        "Event": {
+            "properties": {
+                "img": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "from": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "to": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "venue": {
+                    "type": "string"
+                },
+                "creator_id": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "xml": {
+                "name": "Event"
+            }
+        },
         "User": {
             "properties": {
                 "name": {
@@ -248,6 +546,20 @@
                 },
                 "job_name": {
                     "description": "",
+                    "type": "string"
+                },
+                "profile_img": {
+                    "description": "",
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "User"
+            }
+        },
+        "UserInvite": {
+            "properties": {
+                "email": {
                     "type": "string"
                 }
             },
