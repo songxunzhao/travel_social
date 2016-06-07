@@ -45,11 +45,6 @@ class Event extends Model
      * @var integer
      */
     public $creator_id;
-    /**
-     * @SWG\Property()
-     * @var dateTime
-     */
-    public $created_at;
 
     protected $fillable=['img', 'title', 'from', 'to', 'description', 'venue', 'creator_id'];
     public function attends() {

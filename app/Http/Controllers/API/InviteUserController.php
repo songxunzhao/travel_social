@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Mail;
 class InviteUserController extends Controller
 {
     //
@@ -68,13 +68,20 @@ class InviteUserController extends Controller
             return response()->json(['code' => 400, 'errors' => $validator->errors()]);
         }
 
-        //TODO: Send invitation email to user
 
         //Add invitation record
         $user = $request->user();
 
         $email = $request->input('email', '');
         $email_user = User::where('email', $email)->first();
+
+        //TODO: Send invitation email to user
+        Mail::send('emails.invitation', ['inviter'=>$user], function($message) use($email) {
+            $message->to($email);
+            $message->from('mailer@habbis.com');
+            $message->subject('You received invitation');
+        });
+
         if($email_user)
         {
             return response()->json(['code' => 429, 'message'=> 'User already exist'], 429);
@@ -91,6 +98,9 @@ class InviteUserController extends Controller
             'user_id' => $user_id
         ];
         $user_invite = UserInvite::create($data);
+
+        $user->score += User::score_cases()['invite_user'];
+        $user->save();
         return response()->json(['code' => 200, 'message'=> 'Request was created']);
 
     }

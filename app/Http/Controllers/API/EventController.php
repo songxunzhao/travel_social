@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\EventMember;
+use App\User;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Http\Requests;
@@ -103,6 +104,10 @@ class EventController extends Controller
         else {
             EventMember::create(['uuid'=>EventMember::getuuid(), 'event_id'=>$eventId, 'user_id'=>$user->id]);
         }
+
+        $user->score += User::score_cases()['attend_event'];
+        $user->save();
+
         return response()->json(['code'=>200, 'message'=>'Attend request was successful']);
     }
     /**
@@ -190,12 +195,16 @@ class EventController extends Controller
         $validator = $this->validator($request->all());
         $request_data = $request->all();
         $request_data['creator_id'] = $user->id;
-        if(!$validator->fails()) {
-            $event = Event::create($request_data);
-            EventMember::create(['uuid'=>EventMember::getuuid(), 'event_id'=>$event->id, 'user_id'=>$user->id]);
-
-            return response()->json(['code'=>200, 'data'=> $event->toArray()]);
+        if($validator->fails()) {
+            return response()->json(['code'=>400, 'errors'=> $validator->errors(), 'message'=>'Bad request format']);
         }
-        return response()->json(['code'=>400, 'errors'=> $validator->errors(), 'message'=>'Bad request format']);
+
+        $event = Event::create($request_data);
+        EventMember::create(['uuid'=>EventMember::getuuid(), 'event_id'=>$event->id, 'user_id'=>$user->id]);
+
+        #Add score
+        $user->score += User::score_cases()['create_event'];
+        $user->save();
+        return response()->json(['code'=>200, 'data'=> $event->toArray()]);
     }
 }

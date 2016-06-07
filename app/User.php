@@ -65,12 +65,14 @@ class User extends Authenticatable
         $obj = $this->toArray();
         $obj['invited_by'] = $this->getInvitedByAttribute();
         $obj['relationship'] = $this->getRelationshipAttribute();
+        $obj['rank'] = $this->getRankingAttribute();
         return $obj;
     }
 
     public function getRankingAttribute() {
-        
+        return User::where('score', '>', $this->score)->count() + 1;
     }
+
     public function getInvitedByAttribute() {
         $invite_arr= [];
         $invites = UserInvite::where('registered_id', $this->id)->get();
@@ -86,5 +88,23 @@ class User extends Authenticatable
             $relative_arr[] = $relative->registered->toArray();
         }
         return $relative_arr;
+    }
+
+    public static function score_cases() {
+        return [
+            "invite_user" => 101,
+            "request_meet_up" => 4,
+            "accept_meet_up" => 8,
+            "sos" => 1,
+            "help_sos" => 10,
+            "buy_item" => 40,
+            "report_spam" => 10,
+            "create_event" => 10,
+            "attend_event" => 2,
+            "add_item" => 10,
+            "get_reported" => -30,
+            "deleted_by_admin" => -80,
+            "cancel_attend" => -3
+        ];
     }
 }
