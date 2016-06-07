@@ -2,7 +2,7 @@
 /**
  * @SWG\Swagger(
  *     schemes={"http"},
- *     host="localhost",
+ *     host="198.71.54.50",
  *     basePath="/habbis/public/",
  *     @SWG\Info(
  *         version="1.0.0",
