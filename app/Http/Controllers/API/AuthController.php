@@ -29,7 +29,7 @@ class AuthController extends Controller
     /**
      * @SWG\Post(
      *     path="api/account/login",
-     *     tags={"User"},
+     *     tags={"Account"},
      *     summary="Login",
      *     description="Login user by email and password",
      *     consumes={"application/json"},
@@ -154,7 +154,7 @@ class AuthController extends Controller
     /**
      * @SWG\Post(
      *     path="api/account/register",
-     *     tags={"User"},
+     *     tags={"Account"},
      *     summary="Register",
      *     description="Register user. name, email and password fields are required",
      *     consumes={"application/json"},
