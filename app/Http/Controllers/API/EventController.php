@@ -77,7 +77,7 @@ class EventController extends Controller
             AND z.longitude
              BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
                  AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
-          ORDER BY distance_in_km asc")
+          ORDER BY distance_in_km asc");
 
         $event_arr =[];
         foreach($events as $event) {
