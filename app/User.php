@@ -85,7 +85,8 @@ class User extends Authenticatable
         $relative_arr = [];
         $relatives = UserInvite::where('user_id', $this->id)->get();
         foreach($relatives as $relative) {
-            $relative_arr[] = $relative->registered->toArray();
+            if($relative->registered)
+                $relative_arr[] = $relative->registered->toArray();
         }
         return $relative_arr;
     }
