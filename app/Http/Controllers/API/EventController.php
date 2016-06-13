@@ -25,7 +25,7 @@ class EventController extends Controller
     }
     /**
      * @SWG\Get(
-     *     path="api/event",
+     *     path="api/events",
      *     tags={"Event"},
      *     summary="Get event list",
      *     description="Get event list",
@@ -63,7 +63,7 @@ class EventController extends Controller
     }
     /**
      * @SWG\Get(
-     *     path="api/event/{event_id}/attend",
+     *     path="api/events/{event_id}/attend",
      *     tags={"Event"},
      *     summary="Attend event",
      *     description="Attend event",
@@ -114,7 +114,7 @@ class EventController extends Controller
     }
     /**
      * @SWG\Get(
-     *     path="api/event/{event_id}",
+     *     path="api/events/{event_id}",
      *     tags={"Event"},
      *     summary="Get event detail",
      *     description="Get event detail",
@@ -156,7 +156,7 @@ class EventController extends Controller
     }
     /**
      * @SWG\Post(
-     *     path="api/event",
+     *     path="api/events",
      *     tags={"Event"},
      *     summary="Create event",
      *     description="Create event",

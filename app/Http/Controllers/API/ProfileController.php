@@ -28,7 +28,7 @@ class ProfileController extends Controller
     }
     /**
      * @SWG\Post(
-     *     path="api/user/profile",
+     *     path="api/account/profile",
      *     tags={"User"},
      *     summary="Profile",
      *     description="Get user profile",
@@ -69,7 +69,7 @@ class ProfileController extends Controller
     }
     /**
      * @SWG\Get(
-     *     path="api/user/profile",
+     *     path="api/account/profile",
      *     tags={"User"},
      *     summary="Profile",
      *     description="Get user profile",

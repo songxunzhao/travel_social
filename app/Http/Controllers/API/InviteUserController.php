@@ -20,7 +20,7 @@ class InviteUserController extends Controller
 
     /**
      * @SWG\Post(
-     *     path="api/user/invite",
+     *     path="api/account/invites",
      *     tags={"User"},
      *     summary="Invite user by email",
      *     description="Invite user by email",

@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 Route::group(['prefix'=> 'api', 'middleware' => ['api']], function () {
     // API routes
-    Route::post('user/login', 'API\AuthController@login');
-    Route::post('user/register', 'API\AuthController@register');
+    Route::post('account/login', 'API\AuthController@login');
+    Route::post('account/register', 'API\AuthController@register');
     Route::group(['middleware' => 'jwt.auth'], function() {
-    	Route::resource('user/profile', 'API\ProfileController');
-        Route::resource('event', 'API\EventController');
-        Route::post('user/invite', 'API\InviteUserController@invite');
+    	Route::resource('account/profile', 'API\ProfileController');
+        Route::resource('events', 'API\EventController');
+        Route::post('account/invites', 'API\InviteUserController@invite');
     	Route::post('files', 'API\FileController@upload');
-        Route::get('event/{eventId}/attend', 'API\EventController@attend');
+        Route::get('events/{eventId}/attend', 'API\EventController@attend');
     });
 });
