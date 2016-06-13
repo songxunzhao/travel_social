@@ -510,6 +510,8 @@
                 },
                 "creator_id": {
                     "type": "integer"
+<<<<<<< HEAD
+=======
                 },
                 "lat": {
                     "type": "number",
@@ -518,6 +520,7 @@
                 "lng": {
                     "type": "number",
                     "format": "float"
+>>>>>>> 70315045b23bf81f95c9855ab34ee6d77b2380fb
                 }
             },
             "xml": {
@@ -527,33 +530,26 @@
         "User": {
             "properties": {
                 "name": {
-                    "description": "",
                     "type": "string"
                 },
                 "age": {
-                    "description": "",
                     "type": "integer"
                 },
                 "location": {
-                    "description": "",
                     "type": "string"
                 },
                 "lat": {
-                    "description": "",
                     "type": "number",
                     "format": "float"
                 },
                 "lng": {
-                    "description": "",
                     "type": "number",
                     "format": "float"
                 },
                 "job_name": {
-                    "description": "",
                     "type": "string"
                 },
                 "profile_img": {
-                    "description": "",
                     "type": "string"
                 }
             },
