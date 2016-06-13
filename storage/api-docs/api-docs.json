@@ -13,7 +13,7 @@
         },
         "version": "1.0.0"
     },
-    "host": "localhost",
+    "host": "198.71.54.50",
     "basePath": "/habbis/public/",
     "schemes": [
         "http"
@@ -511,9 +511,13 @@
                 "creator_id": {
                     "type": "integer"
                 },
-                "created_at": {
-                    "type": "string",
-                    "format": "date-time"
+                "lat": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "lng": {
+                    "type": "number",
+                    "format": "float"
                 }
             },
             "xml": {
@@ -564,7 +568,7 @@
                 }
             },
             "xml": {
-                "name": "User"
+                "name": "UserInvite"
             }
         }
     }
