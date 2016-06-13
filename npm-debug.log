@@ -1,0 +1,416 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', '-g', 'apidoc' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose cache add [ 'apidoc', null ]
+5 verbose cache add name=undefined spec="apidoc" args=["apidoc",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'apidoc',
+6 verbose parsed url   path: 'apidoc',
+6 verbose parsed url   href: 'apidoc' }
+7 silly lockFile b7224f5a-apidoc apidoc
+8 verbose lock apidoc /home/webdev/.npm/b7224f5a-apidoc.lock
+9 silly lockFile b7224f5a-apidoc apidoc
+10 silly lockFile b7224f5a-apidoc apidoc
+11 verbose addNamed [ 'apidoc', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile a3b73c7a-apidoc apidoc@
+14 verbose lock apidoc@ /home/webdev/.npm/a3b73c7a-apidoc.lock
+15 silly addNameRange { name: 'apidoc', range: '*', hasData: false }
+16 verbose url raw apidoc
+17 verbose url resolving [ 'https://registry.npmjs.org/', './apidoc' ]
+18 verbose url resolved https://registry.npmjs.org/apidoc
+19 info trying registry request attempt 1 at 05:28:03
+20 http GET https://registry.npmjs.org/apidoc
+21 http 200 https://registry.npmjs.org/apidoc
+22 silly registry.get cb [ 200,
+22 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+22 silly registry.get     etag: '"916OV84ULZ6TQU22O8M2YV6ZN"',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=300',
+22 silly registry.get     'content-length': '78213',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     date: 'Mon, 23 May 2016 09:28:03 GMT',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '0',
+22 silly registry.get     connection: 'keep-alive',
+22 silly registry.get     'x-served-by': 'cache-dfw1830-DFW',
+22 silly registry.get     'x-cache': 'MISS',
+22 silly registry.get     'x-cache-hits': '0',
+22 silly registry.get     'x-timer': 'S1463995683.399194,VS0,VE277',
+22 silly registry.get     vary: 'Accept-Encoding' } ]
+23 silly addNameRange number 2 { name: 'apidoc', range: '*', hasData: true }
+24 silly addNameRange versions [ 'apidoc',
+24 silly addNameRange   [ '0.1.5',
+24 silly addNameRange     '0.1.6',
+24 silly addNameRange     '0.1.7',
+24 silly addNameRange     '0.1.8',
+24 silly addNameRange     '0.1.9',
+24 silly addNameRange     '0.1.10',
+24 silly addNameRange     '0.1.11',
+24 silly addNameRange     '0.2.0',
+24 silly addNameRange     '0.2.1',
+24 silly addNameRange     '0.2.2',
+24 silly addNameRange     '0.2.3',
+24 silly addNameRange     '0.2.4',
+24 silly addNameRange     '0.2.5',
+24 silly addNameRange     '0.2.6',
+24 silly addNameRange     '0.2.7',
+24 silly addNameRange     '0.2.8',
+24 silly addNameRange     '0.3.0',
+24 silly addNameRange     '0.4.0',
+24 silly addNameRange     '0.4.1',
+24 silly addNameRange     '0.4.2',
+24 silly addNameRange     '0.4.3',
+24 silly addNameRange     '0.4.4',
+24 silly addNameRange     '0.5.0',
+24 silly addNameRange     '0.5.1',
+24 silly addNameRange     '0.5.2',
+24 silly addNameRange     '0.6.0',
+24 silly addNameRange     '0.6.1',
+24 silly addNameRange     '0.6.2',
+24 silly addNameRange     '0.6.3',
+24 silly addNameRange     '0.6.4',
+24 silly addNameRange     '0.6.5',
+24 silly addNameRange     '0.7.0',
+24 silly addNameRange     '0.7.1',
+24 silly addNameRange     '0.7.2',
+24 silly addNameRange     '0.8.0',
+24 silly addNameRange     '0.8.1',
+24 silly addNameRange     '0.8.2',
+24 silly addNameRange     '0.9.0',
+24 silly addNameRange     '0.9.1',
+24 silly addNameRange     '0.10.0',
+24 silly addNameRange     '0.10.1',
+24 silly addNameRange     '0.11.0',
+24 silly addNameRange     '0.12.0',
+24 silly addNameRange     '0.12.1',
+24 silly addNameRange     '0.12.2',
+24 silly addNameRange     '0.12.3',
+24 silly addNameRange     '0.13.0',
+24 silly addNameRange     '0.13.1',
+24 silly addNameRange     '0.13.2',
+24 silly addNameRange     '0.14.0',
+24 silly addNameRange     '0.15.0',
+24 silly addNameRange     '0.15.1',
+24 silly addNameRange     '0.16.0',
+24 silly addNameRange     '0.16.1' ] ]
+25 verbose addNamed [ 'apidoc', '0.16.1' ]
+26 verbose addNamed [ '0.16.1', '0.16.1' ]
+27 silly lockFile db2fb1b0-apidoc-0-16-1 apidoc@0.16.1
+28 verbose lock apidoc@0.16.1 /home/webdev/.npm/db2fb1b0-apidoc-0-16-1.lock
+29 silly lockFile d67ee5ec-mjs-org-apidoc-apidoc-0-16-1-tgz https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz
+30 verbose lock https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz /home/webdev/.npm/d67ee5ec-mjs-org-apidoc-apidoc-0-16-1-tgz.lock
+31 verbose addRemoteTarball [ 'https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz',
+31 verbose addRemoteTarball   '26a1cde4f2c4910936ad57adf41dbc83c246e5e9' ]
+32 info retry fetch attempt 1 at 05:28:03
+33 verbose fetch to= /home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/tmp.tgz
+34 http GET https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz
+35 http 200 https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz
+36 verbose tar unpack /home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/tmp.tgz
+37 silly lockFile 5db40317-83733-0-4157375800423324-package tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+38 verbose lock tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package /home/webdev/.npm/5db40317-83733-0-4157375800423324-package.lock
+39 silly lockFile 23b802d9-83733-0-4157375800423324-tmp-tgz tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/tmp.tgz
+40 verbose lock tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/tmp.tgz /home/webdev/.npm/23b802d9-83733-0-4157375800423324-tmp-tgz.lock
+41 silly gunzTarPerm modes [ '755', '644' ]
+42 silly gunzTarPerm extractEntry package.json
+43 silly gunzTarPerm extractEntry README.md
+44 silly gunzTarPerm extractEntry LICENSE
+45 silly gunzTarPerm extractEntry bin/apidoc
+46 silly gunzTarPerm extractEntry .jshintignore
+47 silly gunzTarPerm extractEntry MARKDOWN.md
+48 silly gunzTarPerm extractEntry CONTRIBUTORS.md
+49 silly gunzTarPerm extractEntry CHANGELOG.md
+50 silly gunzTarPerm extractEntry example/_apidoc.js
+51 silly gunzTarPerm extractEntry example/example.js
+52 silly gunzTarPerm extractEntry example/apidoc.json
+53 silly gunzTarPerm extractEntry example/footer.md
+54 silly gunzTarPerm extractEntry example/header.md
+55 silly gunzTarPerm extractEntry lib/index.js
+56 silly gunzTarPerm extractEntry lib/package_info.js
+57 silly gunzTarPerm extractEntry EXAMPLES.md
+58 silly gunzTarPerm extractEntry template/main.js
+59 silly gunzTarPerm extractEntry template/css/style.css
+60 silly gunzTarPerm extractEntry template/img/favicon.ico
+61 silly gunzTarPerm extractEntry template/img/glyphicons-halflings-white.png
+62 silly gunzTarPerm extractEntry template/img/glyphicons-halflings.png
+63 silly gunzTarPerm extractEntry template/index.html
+64 silly gunzTarPerm extractEntry template/locales/ca.js
+65 silly gunzTarPerm extractEntry template/locales/es.js
+66 silly gunzTarPerm extractEntry template/locales/fr.js
+67 silly gunzTarPerm extractEntry template/locales/it.js
+68 silly gunzTarPerm extractEntry template/locales/locale.js
+69 silly gunzTarPerm extractEntry template/locales/de.js
+70 silly gunzTarPerm extractEntry template/locales/pl.js
+71 silly gunzTarPerm extractEntry template/locales/pt_br.js
+72 silly gunzTarPerm extractEntry template/locales/ru.js
+73 silly gunzTarPerm extractEntry template/locales/zh.js
+74 silly gunzTarPerm extractEntry template/locales/zh_cn.js
+75 silly gunzTarPerm extractEntry template/locales/nl.js
+76 silly gunzTarPerm extractEntry template/utils/handlebars_helper.js
+77 silly gunzTarPerm extractEntry template/utils/send_sample_request.js
+78 silly gunzTarPerm extractEntry template/vendor/webfontloader.js
+79 silly gunzTarPerm extractEntry template/vendor/bootstrap.min.js
+80 silly gunzTarPerm extractEntry template/vendor/diff_match_patch.min.js
+81 silly gunzTarPerm extractEntry template/vendor/handlebars.min.js
+82 silly gunzTarPerm extractEntry template/vendor/jquery.min.js
+83 silly gunzTarPerm extractEntry template/vendor/lodash.min.js
+84 silly gunzTarPerm extractEntry template/vendor/polyfill.js
+85 silly gunzTarPerm extractEntry template/vendor/require.min.js
+86 silly gunzTarPerm extractEntry template/vendor/semver.min.js
+87 silly gunzTarPerm extractEntry template/vendor/prettify/lang-apollo.js
+88 silly gunzTarPerm extractEntry template/vendor/prettify/lang-matlab.js
+89 silly gunzTarPerm extractEntry template/vendor/prettify/lang-ml.js
+90 silly gunzTarPerm extractEntry template/vendor/prettify/lang-mumps.js
+91 silly gunzTarPerm extractEntry template/vendor/prettify/lang-n.js
+92 silly gunzTarPerm extractEntry template/vendor/prettify/lang-lua.js
+93 silly gunzTarPerm extractEntry template/vendor/prettify/lang-proto.js
+94 silly gunzTarPerm extractEntry template/vendor/prettify/lang-r.js
+95 silly gunzTarPerm extractEntry template/vendor/prettify/lang-rd.js
+96 silly gunzTarPerm extractEntry template/vendor/prettify/lang-scala.js
+97 silly gunzTarPerm extractEntry template/vendor/prettify/lang-sql.js
+98 silly gunzTarPerm extractEntry template/vendor/prettify/lang-llvm.js
+99 silly gunzTarPerm extractEntry template/vendor/prettify/lang-tcl.js
+100 silly gunzTarPerm extractEntry template/vendor/prettify/lang-lisp.js
+101 silly gunzTarPerm extractEntry template/vendor/prettify/lang-tex.js
+102 silly gunzTarPerm extractEntry template/vendor/prettify/lang-hs.js
+103 silly gunzTarPerm extractEntry template/vendor/prettify/lang-vb.js
+104 silly gunzTarPerm extractEntry template/vendor/prettify/lang-go.js
+105 silly gunzTarPerm extractEntry template/vendor/prettify/lang-vhdl.js
+106 silly gunzTarPerm extractEntry template/vendor/prettify/lang-erlang.js
+107 silly gunzTarPerm extractEntry template/vendor/prettify/lang-wiki.js
+108 silly gunzTarPerm extractEntry template/vendor/prettify/lang-dart.js
+109 silly gunzTarPerm extractEntry template/vendor/prettify/lang-xq.js
+110 silly gunzTarPerm extractEntry template/vendor/prettify/lang-css.js
+111 silly gunzTarPerm extractEntry template/vendor/prettify/lang-yaml.js
+112 silly gunzTarPerm extractEntry template/vendor/prettify/lang-clj.js
+113 silly gunzTarPerm extractEntry template/vendor/prettify/prettify.js
+114 silly gunzTarPerm extractEntry template/vendor/prettify/lang-basic.js
+115 silly gunzTarPerm extractEntry template/vendor/prettify/run_prettify.js
+116 silly gunzTarPerm extractEntry template/vendor/prettify/lang-pascal.js
+117 silly gunzTarPerm extractEntry template/vendor/prettify/prettify.css
+118 silly gunzTarPerm extractEntry template/vendor/prettify.css
+119 silly gunzTarPerm extractEntry template/vendor/bootstrap.min.css
+120 silly gunzTarPerm extractEntry template/vendor/bootstrap-responsive.min.css
+121 silly gunzTarPerm extractEntry template/vendor/path-to-regexp/LICENSE
+122 silly gunzTarPerm extractEntry template/vendor/path-to-regexp/index.js
+123 silly lockFile 5db40317-83733-0-4157375800423324-package tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+124 silly lockFile 5db40317-83733-0-4157375800423324-package tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+125 silly lockFile 23b802d9-83733-0-4157375800423324-tmp-tgz tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/tmp.tgz
+126 silly lockFile 23b802d9-83733-0-4157375800423324-tmp-tgz tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/tmp.tgz
+127 verbose tar pack [ '/home/webdev/.npm/apidoc/0.16.1/package.tgz',
+127 verbose tar pack   '/home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package' ]
+128 verbose tarball /home/webdev/.npm/apidoc/0.16.1/package.tgz
+129 verbose folder /home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+130 silly lockFile 5db40317-83733-0-4157375800423324-package tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+131 verbose lock tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package /home/webdev/.npm/5db40317-83733-0-4157375800423324-package.lock
+132 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+133 verbose lock tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz /home/webdev/.npm/ff4bce84-ev-npm-apidoc-0-16-1-package-tgz.lock
+134 silly lockFile 5db40317-83733-0-4157375800423324-package tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+135 silly lockFile 5db40317-83733-0-4157375800423324-package tar:///home/webdev/tmp/npm-19000-Z7Jml8Rz/1463995683733-0.4157375800423324/package
+136 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+137 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+138 silly lockFile 3d4ddebc-webdev-npm-apidoc-0-16-1-package /home/webdev/.npm/apidoc/0.16.1/package
+139 verbose lock /home/webdev/.npm/apidoc/0.16.1/package /home/webdev/.npm/3d4ddebc-webdev-npm-apidoc-0-16-1-package.lock
+140 silly lockFile 3d4ddebc-webdev-npm-apidoc-0-16-1-package /home/webdev/.npm/apidoc/0.16.1/package
+141 silly lockFile 3d4ddebc-webdev-npm-apidoc-0-16-1-package /home/webdev/.npm/apidoc/0.16.1/package
+142 verbose tar unpack /home/webdev/.npm/apidoc/0.16.1/package.tgz
+143 silly lockFile 08c0e9a0-webdev-npm-apidoc-0-16-1-package tar:///home/webdev/.npm/apidoc/0.16.1/package
+144 verbose lock tar:///home/webdev/.npm/apidoc/0.16.1/package /home/webdev/.npm/08c0e9a0-webdev-npm-apidoc-0-16-1-package.lock
+145 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+146 verbose lock tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz /home/webdev/.npm/ff4bce84-ev-npm-apidoc-0-16-1-package-tgz.lock
+147 silly gunzTarPerm modes [ '755', '644' ]
+148 silly gunzTarPerm extractEntry package.json
+149 silly gunzTarPerm extractEntry README.md
+150 silly gunzTarPerm extractEntry LICENSE
+151 silly gunzTarPerm extractEntry EXAMPLES.md
+152 silly gunzTarPerm extractEntry .jshintignore
+153 silly gunzTarPerm extractEntry MARKDOWN.md
+154 silly gunzTarPerm extractEntry CHANGELOG.md
+155 silly gunzTarPerm extractEntry bin/apidoc
+156 silly gunzTarPerm extractEntry example/_apidoc.js
+157 silly gunzTarPerm extractEntry example/example.js
+158 silly gunzTarPerm extractEntry example/apidoc.json
+159 silly gunzTarPerm extractEntry example/footer.md
+160 silly gunzTarPerm extractEntry example/header.md
+161 silly gunzTarPerm extractEntry lib/index.js
+162 silly gunzTarPerm extractEntry lib/package_info.js
+163 silly gunzTarPerm extractEntry CONTRIBUTORS.md
+164 silly gunzTarPerm extractEntry template/main.js
+165 silly gunzTarPerm extractEntry template/css/style.css
+166 silly gunzTarPerm extractEntry template/img/favicon.ico
+167 silly gunzTarPerm extractEntry template/img/glyphicons-halflings-white.png
+168 silly gunzTarPerm extractEntry template/img/glyphicons-halflings.png
+169 silly gunzTarPerm extractEntry template/index.html
+170 silly gunzTarPerm extractEntry template/locales/ca.js
+171 silly gunzTarPerm extractEntry template/locales/es.js
+172 silly gunzTarPerm extractEntry template/locales/fr.js
+173 silly gunzTarPerm extractEntry template/locales/it.js
+174 silly gunzTarPerm extractEntry template/locales/locale.js
+175 silly gunzTarPerm extractEntry template/locales/de.js
+176 silly gunzTarPerm extractEntry template/locales/pl.js
+177 silly gunzTarPerm extractEntry template/locales/pt_br.js
+178 silly gunzTarPerm extractEntry template/locales/ru.js
+179 silly gunzTarPerm extractEntry template/locales/zh.js
+180 silly gunzTarPerm extractEntry template/locales/zh_cn.js
+181 silly gunzTarPerm extractEntry template/locales/nl.js
+182 silly gunzTarPerm extractEntry template/utils/handlebars_helper.js
+183 silly gunzTarPerm extractEntry template/utils/send_sample_request.js
+184 silly gunzTarPerm extractEntry template/vendor/webfontloader.js
+185 silly gunzTarPerm extractEntry template/vendor/bootstrap.min.js
+186 silly gunzTarPerm extractEntry template/vendor/diff_match_patch.min.js
+187 silly gunzTarPerm extractEntry template/vendor/handlebars.min.js
+188 silly gunzTarPerm extractEntry template/vendor/jquery.min.js
+189 silly gunzTarPerm extractEntry template/vendor/lodash.min.js
+190 silly gunzTarPerm extractEntry template/vendor/polyfill.js
+191 silly gunzTarPerm extractEntry template/vendor/require.min.js
+192 silly gunzTarPerm extractEntry template/vendor/semver.min.js
+193 silly gunzTarPerm extractEntry template/vendor/prettify/lang-apollo.js
+194 silly gunzTarPerm extractEntry template/vendor/prettify/lang-matlab.js
+195 silly gunzTarPerm extractEntry template/vendor/prettify/lang-ml.js
+196 silly gunzTarPerm extractEntry template/vendor/prettify/lang-mumps.js
+197 silly gunzTarPerm extractEntry template/vendor/prettify/lang-n.js
+198 silly gunzTarPerm extractEntry template/vendor/prettify/lang-lua.js
+199 silly gunzTarPerm extractEntry template/vendor/prettify/lang-proto.js
+200 silly gunzTarPerm extractEntry template/vendor/prettify/lang-r.js
+201 silly gunzTarPerm extractEntry template/vendor/prettify/lang-rd.js
+202 silly gunzTarPerm extractEntry template/vendor/prettify/lang-scala.js
+203 silly gunzTarPerm extractEntry template/vendor/prettify/lang-sql.js
+204 silly gunzTarPerm extractEntry template/vendor/prettify/lang-llvm.js
+205 silly gunzTarPerm extractEntry template/vendor/prettify/lang-tcl.js
+206 silly gunzTarPerm extractEntry template/vendor/prettify/lang-lisp.js
+207 silly gunzTarPerm extractEntry template/vendor/prettify/lang-tex.js
+208 silly gunzTarPerm extractEntry template/vendor/prettify/lang-hs.js
+209 silly gunzTarPerm extractEntry template/vendor/prettify/lang-vb.js
+210 silly gunzTarPerm extractEntry template/vendor/prettify/lang-go.js
+211 silly gunzTarPerm extractEntry template/vendor/prettify/lang-vhdl.js
+212 silly gunzTarPerm extractEntry template/vendor/prettify/lang-erlang.js
+213 silly gunzTarPerm extractEntry template/vendor/prettify/lang-wiki.js
+214 silly gunzTarPerm extractEntry template/vendor/prettify/lang-dart.js
+215 silly gunzTarPerm extractEntry template/vendor/prettify/lang-xq.js
+216 silly gunzTarPerm extractEntry template/vendor/prettify/lang-css.js
+217 silly gunzTarPerm extractEntry template/vendor/prettify/lang-yaml.js
+218 silly gunzTarPerm extractEntry template/vendor/prettify/lang-clj.js
+219 silly gunzTarPerm extractEntry template/vendor/prettify/prettify.js
+220 silly gunzTarPerm extractEntry template/vendor/prettify/lang-basic.js
+221 silly gunzTarPerm extractEntry template/vendor/prettify/run_prettify.js
+222 silly gunzTarPerm extractEntry template/vendor/prettify/lang-pascal.js
+223 silly gunzTarPerm extractEntry template/vendor/prettify/prettify.css
+224 silly gunzTarPerm extractEntry template/vendor/prettify.css
+225 silly gunzTarPerm extractEntry template/vendor/bootstrap.min.css
+226 silly gunzTarPerm extractEntry template/vendor/bootstrap-responsive.min.css
+227 silly gunzTarPerm extractEntry template/vendor/path-to-regexp/LICENSE
+228 silly gunzTarPerm extractEntry template/vendor/path-to-regexp/index.js
+229 silly lockFile 08c0e9a0-webdev-npm-apidoc-0-16-1-package tar:///home/webdev/.npm/apidoc/0.16.1/package
+230 silly lockFile 08c0e9a0-webdev-npm-apidoc-0-16-1-package tar:///home/webdev/.npm/apidoc/0.16.1/package
+231 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+232 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+233 verbose chmod /home/webdev/.npm/apidoc/0.16.1/package.tgz 644
+234 verbose chown /home/webdev/.npm/apidoc/0.16.1/package.tgz [ 1000, 1000 ]
+235 silly lockFile d67ee5ec-mjs-org-apidoc-apidoc-0-16-1-tgz https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz
+236 silly lockFile d67ee5ec-mjs-org-apidoc-apidoc-0-16-1-tgz https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz
+237 silly lockFile db2fb1b0-apidoc-0-16-1 apidoc@0.16.1
+238 silly lockFile db2fb1b0-apidoc-0-16-1 apidoc@0.16.1
+239 silly lockFile a3b73c7a-apidoc apidoc@
+240 silly lockFile a3b73c7a-apidoc apidoc@
+241 silly resolved [ { name: 'apidoc',
+241 silly resolved     version: '0.16.1',
+241 silly resolved     description: 'RESTful web API Documentation Generator',
+241 silly resolved     author: { name: 'Peter Rottmann', email: 'rottmann@inveris.de' },
+241 silly resolved     license:
+241 silly resolved      { type: 'MIT',
+241 silly resolved        url: 'https://github.com/apidoc/apidoc/blob/master/LICENSE' },
+241 silly resolved     preferGlobal: true,
+241 silly resolved     bin: { apidoc: 'bin/apidoc' },
+241 silly resolved     main: './lib/index.js',
+241 silly resolved     homepage: 'http://apidocjs.com',
+241 silly resolved     repository: { type: 'git', url: 'https://github.com/apidoc/apidoc.git' },
+241 silly resolved     bugs: { url: 'https://github.com/apidoc/apidoc/issues' },
+241 silly resolved     scripts:
+241 silly resolved      { test: 'npm run jshint && mocha test/',
+241 silly resolved        jshint: 'jshint lib/ test/',
+241 silly resolved        'build-example': 'bin/apidoc -i example/ -o tmp/',
+241 silly resolved        'check-updates': 'npm-check-updates' },
+241 silly resolved     keywords: [ 'api', 'apidoc', 'doc', 'documentation', 'rest', 'restful' ],
+241 silly resolved     engines: { node: '>= 0.10.0' },
+241 silly resolved     dependencies:
+241 silly resolved      { 'apidoc-core': '~0.7.1',
+241 silly resolved        'fs-extra': '~0.28.0',
+241 silly resolved        lodash: '~4.11.1',
+241 silly resolved        'markdown-it': '^6.0.1',
+241 silly resolved        nomnom: '~1.8.1',
+241 silly resolved        winston: '~2.2.0' },
+241 silly resolved     devDependencies:
+241 silly resolved      { 'apidoc-example': '*',
+241 silly resolved        jshint: '^2.9.2',
+241 silly resolved        mocha: '~2.4.5',
+241 silly resolved        'npm-check-updates': '^2.6.3',
+241 silly resolved        'path-to-regexp': '^1.2.1',
+241 silly resolved        semver: '^5.1.0',
+241 silly resolved        should: '~8.3.1',
+241 silly resolved        webfontloader: '^1.6.24' },
+241 silly resolved     jshintConfig:
+241 silly resolved      { camelcase: true,
+241 silly resolved        curly: false,
+241 silly resolved        eqeqeq: true,
+241 silly resolved        forin: true,
+241 silly resolved        latedef: false,
+241 silly resolved        newcap: true,
+241 silly resolved        undef: true,
+241 silly resolved        unused: true,
+241 silly resolved        trailing: true,
+241 silly resolved        node: true,
+241 silly resolved        browser: true,
+241 silly resolved        predef: [Object] },
+241 silly resolved     readme: '# apiDoc\n\nGenerates a RESTful web API Documentation.\n\n[![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)\n[![Dependency Status](https://david-dm.org/apidoc/apidoc.svg)](https://david-dm.org/apidoc/apidoc)\n[![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)\n\n**Changes from previous version visit [CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)**\n\napiDoc creates a documentation from API descriptions in your source code.\n\nDocumentation at [apidocjs.com](http://apidocjs.com).\n\n[Example](http://apidocjs.com/example/) output.\n\n\n## Installation\n\n`npm install apidoc -g`\n\n\n## Changelog\n\n[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)\n\n\n## Example\n\n```javascript\n/**\n * @api {get} /user/:id Request User information\n * @apiName GetUser\n * @apiGroup User\n *\n * @apiParam {Number} id Users unique ID.\n *\n * @apiSuccess {String} firstname Firstname of the User.\n * @apiSuccess {String} lastname  Lastname of the User.\n */\n```\n\n`apidoc -i example/ -o doc/`\n\nCreates from input files in `example/` a documentation in path `doc/`.\n\n\nMore examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/apidoc/blob/master/EXAMPLES.md)\n\n\n## Supported programming languages\n\n * **C#, Go, Dart, Java, JavaScript, PHP, Scala** (all DocStyle capable languages):\n\n   ```javascript\n   /**\n     * This is a comment.\n     */\n   ```\n\n * **Clojure**:\n\n   ```clojure\n   ;;;;\n   ;; This is a comment.\n   ;;;;\n   ```\n\n * **CoffeeScript**:\n\n   ```coffeescript\n   ###\n   This is a comment.\n   ###\n   ```\n\n * **Erlang**:\n\n   ```erlang\n   %{\n   This is a comment.\n   %}\n   ```\n\n * **Perl**\n\n   ```perl\n   #**\n   # This is a comment.\n   #*\n   ```\n\n   ```perl\n   =pod\n   This is a comment.\n   =cut\n   ```\n\n * **Python**\n\n   ```python\n   """\n   This is a comment.\n   """\n   ```\n\n * **Ruby**\n\n   ```ruby\n   =begin\n   This is a comment.\n   =end\n   ```\n\n\n## Build tools\n\n* [flask-apidoc](https://pypi.python.org/pypi/flask-apidoc/) `pip install flask-apidoc`\n* [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.\n* [gapidoc (gulp)](https://github.com/techgaun/gulp-apidoc) `npm install gapidoc`.\n* [gulp-apidoc](https://github.com/ayhankuru/gulp-apidoc) `npm install gulp-apidoc`.\n* [gulp-apidocjs](https://github.com/apriendeau/gulp-apidocjs) `npm install gulp-apidocjs`.\n\n\n## Integration\n\n* [Eclipse Java apiDoc editor templates](https://github.com/skhani/eclipse_java_apiDoc_templates)\n* [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)\n* [Microsoft WebAPI](https://github.com/chehabz/grunt-edge-apidoc-webapi-generator)\n* [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)\n\n\n## Converter\n\n* [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)\n* [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)\n\n\n## FAQ\n\n* [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)\n\n\n## Extend apiDoc and write your own Plugin\n\nFor details and an example view [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test)\n\n\n## Help\n\nPlease add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.\nPull requests are welcome too!\n\nA chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).\n\n[![Gitter chat](https://badges.gitter.im/apidoc/talk.png)](https://gitter.im/apidoc/talk)\n',
+241 silly resolved     readmeFilename: 'README.md',
+241 silly resolved     _id: 'apidoc@0.16.1',
+241 silly resolved     dist: { shasum: 'bc92bcb61096b5310eda281575475a4c1377c1da' },
+241 silly resolved     _from: 'apidoc@',
+241 silly resolved     _resolved: 'https://registry.npmjs.org/apidoc/-/apidoc-0.16.1.tgz' } ]
+242 info install apidoc@0.16.1 into /usr/local/lib
+243 info installOne apidoc@0.16.1
+244 info /usr/local/lib/node_modules/apidoc unbuild
+245 verbose tar unpack /home/webdev/.npm/apidoc/0.16.1/package.tgz
+246 silly lockFile 6d159cb6-sr-local-lib-node-modules-apidoc tar:///usr/local/lib/node_modules/apidoc
+247 verbose lock tar:///usr/local/lib/node_modules/apidoc /home/webdev/.npm/6d159cb6-sr-local-lib-node-modules-apidoc.lock
+248 silly lockFile ff4bce84-ev-npm-apidoc-0-16-1-package-tgz tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz
+249 verbose lock tar:///home/webdev/.npm/apidoc/0.16.1/package.tgz /home/webdev/.npm/ff4bce84-ev-npm-apidoc-0-16-1-package-tgz.lock
+250 silly gunzTarPerm modes [ '755', '644' ]
+251 error Error: EACCES, mkdir '/usr/local/lib/node_modules/apidoc'
+251 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/apidoc']
+251 error   errno: 3,
+251 error   code: 'EACCES',
+251 error   path: '/usr/local/lib/node_modules/apidoc',
+251 error   fstream_type: 'Directory',
+251 error   fstream_path: '/usr/local/lib/node_modules/apidoc',
+251 error   fstream_class: 'DirWriter',
+251 error   fstream_stack:
+251 error    [ '/usr/lib/nodejs/fstream/lib/dir-writer.js:36:23',
+251 error      '/usr/lib/nodejs/mkdirp/index.js:37:53',
+251 error      'Object.oncomplete (fs.js:107:15)' ] }
+252 error Please try running this command again as root/Administrator.
+253 error System Linux 3.13.0-85-generic
+254 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "apidoc"
+255 error cwd /var/www/html/habbis
+256 error node -v v0.10.25
+257 error npm -v 1.3.10
+258 error path /usr/local/lib/node_modules/apidoc
+259 error fstream_path /usr/local/lib/node_modules/apidoc
+260 error fstream_type Directory
+261 error fstream_class DirWriter
+262 error code EACCES
+263 error errno 3
+264 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/apidoc'
+265 error fstream_stack /usr/lib/nodejs/fstream/lib/dir-writer.js:36:23
+265 error fstream_stack /usr/lib/nodejs/mkdirp/index.js:37:53
+265 error fstream_stack Object.oncomplete (fs.js:107:15)
+266 verbose exit [ 3, true ]

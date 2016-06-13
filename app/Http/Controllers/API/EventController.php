@@ -17,7 +17,9 @@ class EventController extends Controller
             [
                 'title'=>'required',
                 'from'=>'required|date',
-                'to'=>'required|date'
+                'to'=>'required|date',
+                'lat'=>'numeric',
+                'lng'=>'numeric'
             ]
         );
     }

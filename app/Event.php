@@ -45,8 +45,18 @@ class Event extends Model
      * @var integer
      */
     public $creator_id;
+    /**
+     * @SWG\Property()
+     * @var float
+     */
+    public $lat;
+    /**
+     * @SWG\Property()
+     * @var float
+     */
+    public $lng;
 
-    protected $fillable=['img', 'title', 'from', 'to', 'description', 'venue', 'creator_id'];
+    protected $guarded=['id', 'created_at', 'updated_at'];
     public function attends() {
         return $this->hasMany('App\EventMember', 'event_id');
     }

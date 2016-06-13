@@ -510,6 +510,17 @@
                 },
                 "creator_id": {
                     "type": "integer"
+<<<<<<< HEAD
+=======
+                },
+                "lat": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "lng": {
+                    "type": "number",
+                    "format": "float"
+>>>>>>> 70315045b23bf81f95c9855ab34ee6d77b2380fb
                 }
             },
             "xml": {
