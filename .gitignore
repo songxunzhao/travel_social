@@ -6,3 +6,4 @@ Homestead.json
 .env
 composer.lock
 /.idea
+/storage/api-docs/api-docs.json

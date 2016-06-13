@@ -13,7 +13,7 @@
         },
         "version": "1.0.0"
     },
-    "host": "localhost",
+    "host": "198.71.54.50",
     "basePath": "/habbis/public/",
     "schemes": [
         "http"
@@ -510,10 +510,6 @@
                 },
                 "creator_id": {
                     "type": "integer"
-                },
-                "created_at": {
-                    "type": "string",
-                    "format": "date-time"
                 }
             },
             "xml": {
@@ -523,33 +519,26 @@
         "User": {
             "properties": {
                 "name": {
-                    "description": "",
                     "type": "string"
                 },
                 "age": {
-                    "description": "",
                     "type": "integer"
                 },
                 "location": {
-                    "description": "",
                     "type": "string"
                 },
                 "lat": {
-                    "description": "",
                     "type": "number",
                     "format": "float"
                 },
                 "lng": {
-                    "description": "",
                     "type": "number",
                     "format": "float"
                 },
                 "job_name": {
-                    "description": "",
                     "type": "string"
                 },
                 "profile_img": {
-                    "description": "",
                     "type": "string"
                 }
             },
@@ -564,7 +553,7 @@
                 }
             },
             "xml": {
-                "name": "User"
+                "name": "UserInvite"
             }
         }
     }
