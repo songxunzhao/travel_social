@@ -9,6 +9,7 @@ use App\Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
+use DB;
 class EventController extends Controller
 {
     //
@@ -53,7 +54,30 @@ class EventController extends Controller
      */
     public function index(Request $request) {
         $user = $request->user();
-        $events = Event::all();
+        $lat = $user->lat;
+        $lng = $user->lng;
+
+        #TODO: sort by distance from user
+        // $events = Event::all();
+        $events = DB::select("SELECT z.*,
+        p.distance_unit
+                 * DEGREES(ACOS(COS(RADIANS(p.latpoint))
+                 * COS(RADIANS(z.latitude))
+                 * COS(RADIANS(p.longpoint) - RADIANS(z.longitude))
+                 + SIN(RADIANS(p.latpoint))
+                 * SIN(RADIANS(z.latitude)))) AS distance_in_km
+          FROM events AS z
+          JOIN (   /* these are the query parameters */
+                SELECT  $lat AS latpoint,  $lng AS longpoint,
+                        100.0 AS radius,      111.045 AS distance_unit
+            ) AS p ON 1=1
+          WHERE z.latitude
+             BETWEEN p.latpoint  - (p.radius / p.distance_unit)
+                 AND p.latpoint  + (p.radius / p.distance_unit)
+            AND z.longitude
+             BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+                 AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+          ORDER BY distance_in_km asc")
 
         $event_arr =[];
         foreach($events as $event) {
