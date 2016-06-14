@@ -14,7 +14,8 @@ class UserInvite extends Model
      * @SWG\Property()
      * @var string
      */
-    public $email;
+    protected $email;
+    
     protected $primaryKey = "uuid";
     protected $fillable = [
         'uuid', 'email', 'user_id', 'registered_id'

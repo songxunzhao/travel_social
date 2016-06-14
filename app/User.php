@@ -44,6 +44,7 @@ class User extends Authenticatable
      * @var string
      */
     protected $profile_img;
+
     /**
      * The attributes that are mass assignable.
      *
