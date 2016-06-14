@@ -65,7 +65,8 @@ class InviteUserController extends Controller
     public function invite(Request $request){
         $validator = $this->validator($request->all());
         if($validator->fails()) {
-            return response()->json(['code' => 400, 'errors' => $validator->errors()]);
+            return response()->json(['code' => 400, 'message'=> 'some fields are missing or wrong',
+                'errors' => $validator->errors()]);
         }
 
 

@@ -60,7 +60,7 @@ class ProfileController extends Controller
     	$validator = $this->validator($request->all());
     	if($validator->fails()) {
     		return response()->json(['code' => 400, 
-    								'message' => 'Bad request format', 
+    								'message' => 'Some fields are missing or wrong',
     								'errors' => $validator->errors()]);
     	}
         $request_data = $request->except('email', 'password');

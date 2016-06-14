@@ -212,7 +212,8 @@ class EventController extends Controller
         $request_data = $request->all();
         $request_data['creator_id'] = $user->id;
         if($validator->fails()) {
-            return response()->json(['code'=>400, 'errors'=> $validator->errors(), 'message'=>'Bad request format']);
+            return response()->json(['code'=>400, 'errors'=> $validator->errors(),
+                                    'message'=>'Some fields are missing or wrong']);
         }
 
         $event = Event::create($request_data);

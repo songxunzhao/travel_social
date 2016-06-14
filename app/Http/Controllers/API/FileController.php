@@ -66,6 +66,6 @@ class FileController extends Controller
                                     ]);
         }
         return response()->json(['code' => 400,
-                                'message' => 'Bad request format']);
+                                'message' => 'Some fields are missing']);
    	}
 }

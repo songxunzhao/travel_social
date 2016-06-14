@@ -91,7 +91,7 @@ class AuthController extends Controller
             // attempt to verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(
-                    ['code' => 401, 'error' => 'invalid_credentials'], 
+                    ['code' => 401, 'message'=> "Email or password is wrong", 'error' => 'invalid_credentials'],
                     401);
             }
         } catch (JWTException $e) {
@@ -207,7 +207,7 @@ class AuthController extends Controller
             'password'=> 'required|min:8'
             ]);
         if($validator->fails()) {
-            return response()->json(['code' => 400,
+            return response()->json(['code' => 400, 'message' => 'Some fields are missing or wrong',
                 'errors' => $validator->errors()], 400);
         }
 
