@@ -15,7 +15,7 @@ class UserInvite extends Model
      * @var string
      */
     protected $email;
-    
+
     protected $primaryKey = "uuid";
     protected $fillable = [
         'uuid', 'email', 'user_id', 'registered_id'

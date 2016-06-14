@@ -207,8 +207,8 @@ class AuthController extends Controller
             'password'=> 'required|min:8'
             ]);
         if($validator->fails()) {
-            return response()->json(['code' => 200, 
-                'errors' => $validator->errors()]);
+            return response()->json(['code' => 400,
+                'errors' => $validator->errors()], 400);
         }
 
         $email = $request->input('email');
