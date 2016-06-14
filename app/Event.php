@@ -14,49 +14,50 @@ class Event extends Model
      * @SWG\Property()
      * @var string
      */
-    public $img;
+    protected $img;
     /**
      * @SWG\Property()
      * @var string
      */
-    public $title;
+    protected $title;
     /**
      * @SWG\Property()
      * @var dateTime
      */
-    public $from;
+    protected $from;
     /**
      * @SWG\Property()
      * @var dateTime
      */
-    public $to;
+    protected $to;
     /**
      * @SWG\Property()
      * @var string
      */
-    public $description;
+    protected $description;
     /**
      * @SWG\Property()
      * @var string
      */
-    public $venue;
+    protected $venue;
     /**
      * @SWG\Property()
      * @var integer
      */
-    public $creator_id;
+    protected $creator_id;
     /**
      * @SWG\Property()
      * @var float
      */
-    public $lat;
+    protected $lat;
     /**
      * @SWG\Property()
      * @var float
      */
-    public $lng;
+    protected $lng;
 
-    protected $guarded=['id', 'created_at', 'updated_at'];
+    protected $fillable=['img', 'from', 'to', 'description', 
+                        'venue', 'creator_id', 'lat', 'lng'];
     public function attends() {
         return $this->hasMany('App\EventMember', 'event_id');
     }

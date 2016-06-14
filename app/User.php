@@ -12,38 +12,38 @@ class User extends Authenticatable
      * @SWG\Property()
      * @var string
      */
-    public $name;
+    protected $name;
     /**
      * @SWG\Property()
      * @var int
      */
-    public $age;
+    protected $age;
     /**
      * @SWG\Property()
      * @var string
      */
-    public $location;
+    protected $location;
     /**
      * @SWG\Property()
      * @var float
      */
-    public $lat;
+    protected $lat;
     /**
      * @SWG\Property()
      * @var float
      */
-    public $lng;
+    protected $lng;
     /**
      * @SWG\Property()
      * @var string
      */
-    public $job_name;
+    protected $job_name;
 
     /**
      * @SWG\Property()
      * @var string
      */
-    public $profile_img;
+    protected $profile_img;
     /**
      * The attributes that are mass assignable.
      *

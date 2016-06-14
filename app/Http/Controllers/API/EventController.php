@@ -59,25 +59,15 @@ class EventController extends Controller
 
         #TODO: sort by distance from user
         // $events = Event::all();
-        $events = DB::select("SELECT z.*,
-        p.distance_unit
+        $events = Event::selectRaw('*, p.distance_unit
                  * DEGREES(ACOS(COS(RADIANS(p.latpoint))
-                 * COS(RADIANS(z.latitude))
-                 * COS(RADIANS(p.longpoint) - RADIANS(z.longitude))
+                 * COS(RADIANS(events.lat))
+                 * COS(RADIANS(p.longpoint) - RADIANS(events.lng))
                  + SIN(RADIANS(p.latpoint))
-                 * SIN(RADIANS(z.latitude)))) AS distance_in_km
-          FROM events AS z
-          JOIN (   /* these are the query parameters */
-                SELECT  $lat AS latpoint,  $lng AS longpoint,
-                        100.0 AS radius,      111.045 AS distance_unit
-            ) AS p ON 1=1
-          WHERE z.latitude
-             BETWEEN p.latpoint  - (p.radius / p.distance_unit)
-                 AND p.latpoint  + (p.radius / p.distance_unit)
-            AND z.longitude
-             BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
-                 AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
-          ORDER BY distance_in_km asc");
+                 * SIN(RADIANS(events.lat)))) AS distance_in_km')->join(DB::raw("(SELECT  $lat AS latpoint,  $lng AS longpoint,
+                        100.0 AS radius,      111.045 AS distance_unit) as p"), function($join) {
+            $join->on(DB::raw('1'), '=', DB::raw('1'));
+        })->orderBy('distance_in_km', 'asc')->get();
 
         $event_arr =[];
         foreach($events as $event) {
@@ -226,6 +216,8 @@ class EventController extends Controller
         }
 
         $event = Event::create($request_data);
+        $event->title = 'abcd';
+        $event->save();
         EventMember::create(['uuid'=>EventMember::getuuid(), 'event_id'=>$event->id, 'user_id'=>$user->id]);
 
         #Add score
