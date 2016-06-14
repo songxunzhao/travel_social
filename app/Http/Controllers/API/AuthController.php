@@ -203,7 +203,7 @@ class AuthController extends Controller
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'name'=> 'required|max:255', 
-            'email'=> 'required|email|unique:users|max:255',
+            'email'=> 'required|email|max:255',
             'password'=> 'required|min:8'
             ]);
         if($validator->fails()) {
@@ -216,6 +216,12 @@ class AuthController extends Controller
         if(!$invite){
             return response()->json(['code' => 403, 'message' => 'You must get invitation to register'], 403);
         }
+
+        $user = User::where('email', $email)->first();
+        if($user) {
+            return response()->json(['code'=> 400, 'message' => 'You are already registered as user'], 400);
+        }
+        
         $user = $this->create($request->all());
         $invite->registered_id = $user->id;
         $invite->save();
