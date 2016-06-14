@@ -19,6 +19,9 @@ Route::group(['prefix'=> 'api', 'middleware' => ['api']], function () {
     // API routes
     Route::post('account/login', 'API\AuthController@login');
     Route::post('account/register', 'API\AuthController@register');
+    Route::resource('account/request', 'API\AccountRequestController');
+    Route::post('account/password/reset', 'API\AccountRequestController@resetPassword');
+
     Route::group(['middleware' => 'jwt.auth'], function() {
     	Route::resource('account/profile', 'API\ProfileController');
         Route::resource('events', 'API\EventController');

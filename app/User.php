@@ -82,6 +82,7 @@ class User extends Authenticatable
         }
         return $invite_arr;
     }
+
     public function getRelationshipAttribute(){
         $relative_arr = [];
         $relatives = UserInvite::where('user_id', $this->id)->get();
@@ -90,6 +91,10 @@ class User extends Authenticatable
                 $relative_arr[] = $relative->registered->toArray();
         }
         return $relative_arr;
+    }
+
+    public function setPassword($password) {
+        $this->password = bcrypt($password);
     }
 
     public static function score_cases() {
