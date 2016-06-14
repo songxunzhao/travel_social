@@ -219,9 +219,9 @@ class AuthController extends Controller
 
         $user = User::where('email', $email)->first();
         if($user) {
-            return response()->json(['code'=> 400, 'message' => 'You are already registered as user'], 400);
+            return response()->json(['code'=> 400, 'message' => 'You are already registered user'], 400);
         }
-        
+
         $user = $this->create($request->all());
         $invite->registered_id = $user->id;
         $invite->save();
