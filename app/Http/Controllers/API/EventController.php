@@ -217,7 +217,6 @@ class EventController extends Controller
         }
 
         $event = Event::create($request_data);
-        $event->title = 'abcd';
         $event->save();
         EventMember::create(['uuid'=>EventMember::getuuid(), 'event_id'=>$event->id, 'user_id'=>$user->id]);
 
