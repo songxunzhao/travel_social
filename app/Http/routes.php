@@ -24,9 +24,10 @@ Route::group(['prefix'=> 'api', 'middleware' => ['api']], function () {
 
     Route::group(['middleware' => 'jwt.auth'], function() {
     	Route::resource('account/profile', 'API\ProfileController');
-        Route::resource('events', 'API\EventController');
         Route::post('account/invites', 'API\InviteUserController@invite');
-    	Route::post('files', 'API\FileController@upload');
+        Route::resource('users', 'API\UserController');
+        Route::resource('events', 'API\EventController');
         Route::get('events/{eventId}/attend', 'API\EventController@attend');
+    	Route::post('files', 'API\FileController@upload');
     });
 });
