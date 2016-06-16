@@ -35,7 +35,7 @@ class EventController extends Controller
      *     @SWG\Parameter(
      *          name="category",
      *          in="query",
-     *          description="Category name",
+     *          description="Category name - 'nearby', and 'mine' are possible",
      *          required=true,
      *          type="string"
      *      ),
