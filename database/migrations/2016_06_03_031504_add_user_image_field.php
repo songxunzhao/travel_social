@@ -17,7 +17,7 @@ class AddUserImageField extends Migration
             return;
         }
         Schema::table('users', function($table) {
-            $table->string('profile_img', 50);
+            $table->string('profile_img', 256);
         });
     }
 

@@ -19,9 +19,7 @@ class ProfileController extends Controller
     }
     protected function validator($data) {
     	return Validator::make($data, [
-    		'name'=> 'required',
     		'birth' => 'date',
-    		'location' => 'required',
     		'lat' => 'numeric',
     		'lng' => 'numeric'
     	]);
