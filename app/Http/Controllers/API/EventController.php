@@ -83,7 +83,9 @@ class EventController extends Controller
                 $event_arr[] = $event->toSummaryArray();
             }
         }
-
+        else{
+            $event_arr = [];
+        }
 
         return response()->json(['code'=>200, 'data'=>$event_arr]);
     }
