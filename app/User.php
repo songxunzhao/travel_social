@@ -97,6 +97,15 @@ class User extends Authenticatable
         $this->password = bcrypt($password);
     }
 
+    public function isCompleteProfile() {
+        if((is_null($this->name) || $this->name == "") || is_null($this->birth) ||
+            (is_null($this->job_name) || $this->job_name == ""))
+            $result = false;
+        else
+            $result = true;
+        return $result;
+    }
+
     public static function score_cases() {
         return [
             "invite_user" => 101,

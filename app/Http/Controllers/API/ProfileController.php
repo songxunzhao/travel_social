@@ -63,7 +63,9 @@ class ProfileController extends Controller
     	}
         $request_data = $request->except('email', 'password');
         $user->update($request_data);
-        return response()->json(['code' => 200, 'data'=> $user->toArray()]);
+        $complete_profile = $user->isCompleteProfile();
+        return response()->json(['code' => 200,
+            'data'=> ['complete_profile'=>$complete_profile, 'user'=>$user->toArray()]]);
     }
     /**
      * @SWG\Get(
