@@ -32,6 +32,13 @@ class EventController extends Controller
      *     description="Get event list",
      *     consumes={"application/json"},
      *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *          name="category",
+     *          in="query",
+     *          description="Category name",
+     *          required=true,
+     *          type="string"
+     *      ),
      *     @SWG\Response(
      *          response="200",
      *          description="",
