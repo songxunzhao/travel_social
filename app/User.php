@@ -8,42 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 */
 class User extends Authenticatable
 {
-    /**
-     * @SWG\Property()
-     * @var string
-     */
-    protected $name;
-    /**
-     * @SWG\Property()
-     * @var date
-     */
-    protected $birth;
-    /**
-     * @SWG\Property()
-     * @var string
-     */
-    protected $location;
-    /**
-     * @SWG\Property()
-     * @var float
-     */
-    protected $lat;
-    /**
-     * @SWG\Property()
-     * @var float
-     */
-    protected $lng;
-    /**
-     * @SWG\Property()
-     * @var string
-     */
-    protected $job_name;
-
-    /**
-     * @SWG\Property()
-     * @var string
-     */
-    protected $profile_img;
+    
 
     /**
      * The attributes that are mass assignable.
