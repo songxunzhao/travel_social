@@ -98,6 +98,10 @@ class User extends Authenticatable
     }
 
     public function isCompleteProfile() {
+        var_dump($this->name);
+        var_dump($this->birth);
+        var_dump($this->job_name);
+
         if((is_null($this->name) || $this->name == "") || is_null($this->birth) ||
             (is_null($this->job_name) || $this->job_name == ""))
             $result = false;
