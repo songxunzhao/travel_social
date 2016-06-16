@@ -20,7 +20,7 @@ class ProfileController extends Controller
     protected function validator($data) {
     	return Validator::make($data, [
     		'name'=> 'required',
-    		'age' => 'numeric',
+    		'birth' => 'date',
     		'location' => 'required',
     		'lat' => 'numeric',
     		'lng' => 'numeric'
@@ -65,7 +65,7 @@ class ProfileController extends Controller
     	}
         $request_data = $request->except('email', 'password');
         $user->update($request_data);
-        return response()->json(['code' => 200]);
+        return response()->json(['code' => 200, 'data'=> $user->toArray()]);
     }
     /**
      * @SWG\Get(

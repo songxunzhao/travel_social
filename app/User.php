@@ -15,9 +15,9 @@ class User extends Authenticatable
     protected $name;
     /**
      * @SWG\Property()
-     * @var int
+     * @var date
      */
-    protected $age;
+    protected $birth;
     /**
      * @SWG\Property()
      * @var string
@@ -51,7 +51,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'age', 'location', 'lat', 'lng', 'job_name', 'profile_img'
+        'name', 'email', 'password', 'birth', 'location', 'lat', 'lng', 'job_name', 'profile_img'
     ];
 
     /**

@@ -104,8 +104,7 @@ class AuthController extends Controller
 
         $user = JWTAuth::toUser($token);
 
-        if((is_null($user->name) || $user->name == "") ||
-            ($user->age == 0) ||
+        if((is_null($user->name) || $user->name == "") || is_null($user->birth) ||
             (is_null($user->job_name) || $user->job_name == ""))
             $complete_profile = false;
         else

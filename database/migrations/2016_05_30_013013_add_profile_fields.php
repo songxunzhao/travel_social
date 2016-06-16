@@ -17,7 +17,7 @@ class AddProfileFields extends Migration
             return;
         }
         Schema::table('users', function($table) {
-            $table->integer('age');
+            $table->date('birth')->nullable();
             $table->string('location', 256);
             $table->decimal('lat', 10, 4);
             $table->decimal('lng', 10, 4);
