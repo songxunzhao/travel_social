@@ -57,22 +57,34 @@ class EventController extends Controller
         $lat = $user->lat;
         $lng = $user->lng;
 
-        #TODO: sort by distance from user
-        // $events = Event::all();
-        $events = Event::selectRaw('*, p.distance_unit
+        $category = $request->input('category');
+        if($category == 'mine') {
+            $events = Event::where('creator_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+            $event_arr =[];
+            foreach($events as $event) {
+                $event_arr[] = $event->toSummaryArray();
+            }
+        }
+        else if($category == 'nearby') {
+            #TODO: sort by distance from user
+            $events = Event::selectRaw('*, p.distance_unit
                  * DEGREES(ACOS(COS(RADIANS(p.latpoint))
                  * COS(RADIANS(events.lat))
                  * COS(RADIANS(p.longpoint) - RADIANS(events.lng))
                  + SIN(RADIANS(p.latpoint))
                  * SIN(RADIANS(events.lat)))) AS distance_in_km')->join(DB::raw("(SELECT  $lat AS latpoint,  $lng AS longpoint,
                         100.0 AS radius,      111.045 AS distance_unit) as p"), function($join) {
-            $join->on(DB::raw('1'), '=', DB::raw('1'));
-        })->orderBy('distance_in_km', 'asc')->get();
+                $join->on(DB::raw('1'), '=', DB::raw('1'));
+            })->where('creator_id', '<>', $user->id)->orderBy('distance_in_km', 'asc')->orderBy('created_at', 'desc')->get();
 
-        $event_arr =[];
-        foreach($events as $event) {
-            $event_arr[] = $event->toSummaryArray();
+            $event_arr =[];
+            foreach($events as $event) {
+                $event_arr[] = $event->toSummaryArray();
+            }
         }
+
+
         return response()->json(['code'=>200, 'data'=>$event_arr]);
     }
     /**
