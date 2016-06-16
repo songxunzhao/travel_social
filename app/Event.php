@@ -11,50 +11,41 @@ class Event extends Model
 {
     //
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="img")
      * @var string
      */
-    protected $img;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="title")
      * @var string
      */
-    protected $title;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="from")
      * @var dateTime
      */
-    protected $from;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="to")
      * @var dateTime
      */
-    protected $to;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="description")
      * @var string
      */
-    protected $description;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="venue")
      * @var string
      */
-    protected $venue;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="creator_id")
      * @var integer
      */
-    protected $creator_id;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="lat")
      * @var float
      */
-    protected $lat;
     /**
-     * @SWG\Property()
+     * @SWG\Property(property="lng")
      * @var float
      */
-    protected $lng;
 
     protected $fillable=['img', 'from', 'to', 'description', 
                         'venue', 'creator_id', 'lat', 'lng'];
