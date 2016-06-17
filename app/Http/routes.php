@@ -28,6 +28,7 @@ Route::group(['prefix'=> 'api', 'middleware' => ['api']], function () {
         Route::resource('users', 'API\UserController');
         Route::resource('events', 'API\EventController');
         Route::get('events/{eventId}/attend', 'API\EventController@attend');
+        Route::get('events/{eventId}/cancel_attend', 'API\EventController@cancelAttend');
     	Route::post('files', 'API\FileController@upload');
     });
 });

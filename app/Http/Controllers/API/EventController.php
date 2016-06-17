@@ -147,6 +147,59 @@ class EventController extends Controller
 
         return response()->json(['code'=>200, 'message'=>'Attend request was successful']);
     }
+
+    /**
+     * @SWG\Get(
+     *     path="api/events/{event_id}/cancel_attend",
+     *     tags={"Event"},
+     *     summary="Cancel attendance",
+     *     description="Cancel attendance",
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *          name="event_id",
+     *          in="path",
+     *          description="Event id",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *     @SWG\Response(
+     *          response="200",
+     *          description="",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="code",
+     *                  type="integer",
+     *                  default=200,
+     *                  description="Response code"
+     *               ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *               )
+     *         )
+     *      )
+     * )
+     */
+    public function cancelAttend(Request $request, $eventId) {
+        $user = $request->user();
+        $event = Event::find($eventId);
+        $member = EventMember::where('event_id', $event->id)->where('user_id', $user->id)->first();
+        if($member)
+        {
+            $member->delete();
+        }
+        else {
+            return response()->json(['code'=>405, 'message'=> 'You are not attending this event'], 405);
+        }
+
+        $user->score += User::score_cases()['cancel_attend'];
+        $user->save();
+
+        return response()->json(['code'=>200, 'message'=>'Attend request was canceled']);
+    }
+
     /**
      * @SWG\Get(
      *     path="api/events/{event_id}",
