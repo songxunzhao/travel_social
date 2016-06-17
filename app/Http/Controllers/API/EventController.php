@@ -132,12 +132,14 @@ class EventController extends Controller
      */
     public function attend(Request $request, $eventId) {
         $user = $request->user();
+
         $event = Event::find($eventId);
+        if(!$event)
+            return response()->json(['code'=>404, 'message'=> 'Event was not found'], 404);
+
         $member = EventMember::where('event_id', $event->id)->where('user_id', $user->id)->first();
         if($member)
-        {
             return response()->json(['code'=>429, 'message'=> 'You are already attending event'], 429);
-        }
         else {
             EventMember::create(['uuid'=>EventMember::getuuid(), 'event_id'=>$eventId, 'user_id'=>$user->id]);
         }
@@ -184,15 +186,19 @@ class EventController extends Controller
      */
     public function cancelAttend(Request $request, $eventId) {
         $user = $request->user();
+
         $event = Event::find($eventId);
+        if(!$event)
+            return response()->json(['code'=>404, 'message'=> 'Event was not found'], 404);
+
+        if($event->creator_id == $user->id)
+            return response()->json(['code'=>405, 'message'=> "Event creator can't do this action"], 405);
+
         $member = EventMember::where('event_id', $event->id)->where('user_id', $user->id)->first();
         if($member)
-        {
             $member->delete();
-        }
-        else {
+        else
             return response()->json(['code'=>405, 'message'=> 'You are not attending this event'], 405);
-        }
 
         $user->score += User::score_cases()['cancel_attend'];
         $user->save();
