@@ -49,6 +49,7 @@ class Event extends Model
 
     protected $fillable=['title', 'img', 'from', 'to', 'description',
                         'venue', 'creator_id', 'lat', 'lng'];
+
     public function attends() {
         return $this->hasMany('App\EventMember', 'event_id');
     }
