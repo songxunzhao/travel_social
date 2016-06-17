@@ -47,7 +47,7 @@ class UserController extends Controller
     public function show($userId) {
         $user = User::where('id', $userId)->first();
         if($user)
-            return response()->json(['code'=>200, $user->toArray()]);
+            return response()->json(['code'=>200, 'data'=> $user->toProfileArray()]);
         else
             return response()->json(['code'=>404, 'message'=>'User was not found'], 404);
     }
