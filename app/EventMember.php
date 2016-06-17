@@ -16,5 +16,9 @@ class EventMember extends Model
     public function user(){
         return $this->hasOne('App\User', 'id', 'user_id');
     }
-
+    public function toDetailArray(){
+        $data = $this->toArray();
+        $data['user'] = $this->user->toArray();
+        return $data;
+    }
 }

@@ -39,6 +39,20 @@ class EventController extends Controller
      *          required=true,
      *          type="string"
      *      ),
+     *      @SWG\Parameter(
+     *          name="page",
+     *          in="query",
+     *          description="Page number",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="page_size",
+     *          in="query",
+     *          description="Page Size",
+     *          required=true,
+     *          type="string"
+     *      ),
      *     @SWG\Response(
      *          response="200",
      *          description="",
@@ -61,13 +75,13 @@ class EventController extends Controller
      */
     public function index(Request $request) {
         $user = $request->user();
+        $page_size = $request->input('page_size', 10);
         $lat = $user->lat;
         $lng = $user->lng;
 
         $category = $request->input('category');
         if($category == 'mine') {
-            $events = Event::where('creator_id', $user->id)->orderBy('created_at', 'desc')->get();
-
+            $events = Event::where('creator_id', $user->id)->orderBy('created_at', 'desc')->paginate($page_size);
             $event_arr =[];
             foreach($events as $event) {
                 $event_arr[] = $event->toSummaryArray();
@@ -83,7 +97,10 @@ class EventController extends Controller
                  * SIN(RADIANS(events.lat)))) AS distance_in_km')->join(DB::raw("(SELECT  $lat AS latpoint,  $lng AS longpoint,
                         100.0 AS radius,      111.045 AS distance_unit) as p"), function($join) {
                 $join->on(DB::raw('1'), '=', DB::raw('1'));
-            })->where('creator_id', '<>', $user->id)->orderBy('distance_in_km', 'asc')->orderBy('created_at', 'desc')->get();
+            })->where('creator_id', '<>', $user->id)
+            ->orderBy('distance_in_km', 'asc')
+            ->orderBy('created_at', 'desc')
+            ->paginate($page_size);
 
             $event_arr =[];
             foreach($events as $event) {
@@ -94,7 +111,15 @@ class EventController extends Controller
             $event_arr = [];
         }
 
-        return response()->json(['code'=>200, 'data'=>$event_arr]);
+        return response()->json([
+                                    'code'=>200,
+                                    'data'=>[
+                                        'count'=>$events->count(),
+                                        'next'=>$events->nextPageUrl(),
+                                        'prev'=>$events->previousPageUrl(),
+                                        'results'=>$event_arr
+                                    ]
+                                ]);
     }
     /**
      * @SWG\Get(

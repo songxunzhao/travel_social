@@ -69,10 +69,16 @@ class Event extends Model
 
         $attends = $this->attends;
         $attend_arr = [];
+
+        $max_summary_attends = 10;
         foreach($attends as $attend) {
+            if($max_summary_attends <= 0)
+                break;
             $attend_arr[] = $attend->user->toAvatarArray();
+            $max_summary_attends -= 1;
         }
         $obj['attends'] = $attend_arr;
+        $obj['num_attends'] = $attends->count();
         return $obj;
     }
 
