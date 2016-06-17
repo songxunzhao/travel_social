@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $obj;
     }
 
+    public function toAvatarArray() {
+        $obj = ['id' => $this->id, 'name'=> $this->name, 'profile_img' => $this->profile_img];
+        return $obj;
+    }
+
     public function getRankingAttribute() {
         return User::where('score', '>', $this->score)->count() + 1;
     }

@@ -66,8 +66,12 @@ class Event extends Model
     public function toSummaryArray() {
         $obj = $this->toArray();
 
-        $num_attends = $this->attends->count();
-        $obj['num_attend'] = $num_attends;
+        $attends = $this->attends;
+        $attend_arr = [];
+        foreach($attends as $attend) {
+            $attend_arr[] = $attend->user->toAvatarArray();
+        }
+        $obj['attends'] = $attend_arr;
         return $obj;
     }
 
