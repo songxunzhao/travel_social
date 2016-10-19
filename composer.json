@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "tymon/jwt-auth": "^0.5.9",
         "darkaonline/l5-swagger": "~3.0",
-        "guzzlehttp/guzzle": "~5.3|~6.0"
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "davibennun/laravel-push-notification": "dev-laravel5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

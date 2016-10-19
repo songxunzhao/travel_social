@@ -97,8 +97,8 @@ class EventController extends Controller
                  * SIN(RADIANS(events.lat)))) AS distance_in_km')->join(DB::raw("(SELECT  $lat AS latpoint,  $lng AS longpoint,
                         100.0 AS radius,      111.045 AS distance_unit) as p"), function($join) {
                 $join->on(DB::raw('1'), '=', DB::raw('1'));
-            })->where('creator_id', '<>', $user->id)
-            ->orderBy('distance_in_km', 'asc')
+            })->where('from','>',DB::raw('DATE_SUB(NOW(),INTERVAL 2 DAY)'))
+	    ->orderBy('distance_in_km', 'asc')
             ->orderBy('created_at', 'desc')
             ->paginate($page_size);
 
@@ -216,8 +216,8 @@ class EventController extends Controller
         if(!$event)
             return response()->json(['code'=>404, 'message'=> 'Event was not found'], 404);
 
-        if($event->creator_id == $user->id)
-            return response()->json(['code'=>405, 'message'=> "Event creator can't do this action"], 405);
+     //   if($event->creator_id == $user->id)
+       //     return response()->json(['code'=>405, 'message'=> "Event creator can't do this action"], 405);
 
         $member = EventMember::where('event_id', $event->id)->where('user_id', $user->id)->first();
         if($member)
@@ -312,10 +312,14 @@ class EventController extends Controller
      * )
      */
     public function store(Request $request) {
+
         $user = $request->user();
         $validator = $this->validator($request->all());
         $request_data = $request->all();
-        $request_data['creator_id'] = $user->id;
+//	print_r(explode(" ",$request_data['from']));
+	$request_data['from'] = date("Y-m-d H:i:s",strtotime($request_data['from']));
+        $request_data['to'] = date("Y-m-d H:i:s",strtotime($request_data['to']));
+	$request_data['creator_id'] = $user->id;
         if($validator->fails()) {
             return response()->json(['code'=>400, 'errors'=> $validator->errors(),
                                     'message'=>'Some fields are missing or wrong']);

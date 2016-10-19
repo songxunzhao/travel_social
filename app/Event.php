@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\EventMember;
+use App\User;
 /**
  *    @SWG\Definition(@SWG\Xml(name="Event"))
  */
@@ -49,7 +50,9 @@ class Event extends Model
 
     protected $fillable=['title', 'img', 'from', 'to', 'description',
                         'venue', 'creator_id', 'lat', 'lng'];
-
+     public function usr() {
+        return $this->hasOne('App\User','id','creator_id');
+    }
     public function attends() {
         return $this->hasMany('App\EventMember', 'event_id');
     }
@@ -81,5 +84,12 @@ class Event extends Model
         $obj['num_attends'] = $attends->count();
         return $obj;
     }
-
+	 public function toSummeventArray() {
+        $obj = $this->toArray();
+	$obj['news_type'] = "event";
+	$usr = $this->usr;
+        $obj['name'] = $usr->name;
+        $obj['profile_img'] = $usr->profile_img;        
+        return $obj;
+    }
 }

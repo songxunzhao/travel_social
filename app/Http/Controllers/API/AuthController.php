@@ -86,8 +86,9 @@ class AuthController extends Controller
     public function login(Request $request){
         // grab credentials from the request
         $credentials = $request->only('email', 'password');
-
-        try {
+	$request_data = $request->all();
+	
+	try {
             // attempt to verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(
@@ -103,7 +104,10 @@ class AuthController extends Controller
         }
 
         $user = JWTAuth::toUser($token);
-
+	if($request->device_token!=''){
+	$usr = User::where('email',$credentials['email'])->first();
+	$usr->device_token = $request->device_token;
+	$usr->save();}
         $complete_profile = $user->isCompleteProfile();
         // all good so return the token
         return response()->json([
@@ -223,4 +227,36 @@ class AuthController extends Controller
         
         return response()->json(['code' => 200], 200);
     }
+
+    public function create_profile(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name'=> 'max:255',
+            'email'=> 'required|email|max:255',
+            'lat'=> 'required|numeric',
+	    'lng'=> 'required|numeric',
+	    'birth'=>'date'
+            ]);
+        if($validator->fails()) {
+            return response()->json(['code' => 400, 'message' => 'Some fields are missing or wrong',
+                'errors' => $validator->errors()], 400);
+        }
+
+        $email = $request->input('email');
+
+        $user = User::where('email', $email)->first();
+        if(!$user) {
+            return response()->json(['code'=> 400, 'message' => 'You are not a registered user'], 400);
+        }
+
+        $user->name = $request->input('name');
+        $user->birth = $request->input('birth');
+	$user->job_name = $request->input('job_name');
+	$user->lat = $request->input('lat');
+	$user->lng = $request->input('lng');
+	$user->profile_img = $request->input('profile_img');
+        $user->save();
+
+        return response()->json(['code' => 200], 200);
+ }	
+
 }

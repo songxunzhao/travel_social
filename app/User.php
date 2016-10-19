@@ -58,6 +58,7 @@ class User extends Authenticatable
     ];
     public function toProfileArray() {
         $obj = $this->toArray();
+	$obj['images'] = $this->getImageByAttribute();
         $obj['invited_by'] = $this->getInvitedByAttribute();
         $obj['relationship'] = $this->getRelationshipAttribute();
         $obj['rank'] = $this->getRankingAttribute();
@@ -66,6 +67,11 @@ class User extends Authenticatable
 
     public function toAvatarArray() {
         $obj = ['id' => $this->id, 'name'=> $this->name, 'profile_img' => $this->profile_img];
+        return $obj;
+    }
+
+   public function toNearArray() {
+        $obj = ['id' => $this->id, 'name'=> $this->name, 'profile_img' => $this->profile_img,'distance_in_km'=>$this->distance_in_km];
         return $obj;
     }
 
@@ -81,7 +87,14 @@ class User extends Authenticatable
         }
         return $invite_arr;
     }
-
+    public function getImageByAttribute() {
+        $image_arr= [];
+        $images = Image::where('uid', $this->id)->get();
+        foreach($images as $image){
+            $image_arr[] = $image->toArray();
+        }
+        return $image_arr;
+    }
     public function getRelationshipAttribute(){
         $relative_arr = [];
         $relatives = UserInvite::where('user_id', $this->id)->get();

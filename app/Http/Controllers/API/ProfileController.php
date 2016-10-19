@@ -7,6 +7,7 @@ use Validator;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Image;
 
 class ProfileController extends Controller
 {
@@ -24,6 +25,8 @@ class ProfileController extends Controller
     		'lng' => 'numeric'
     	]);
     }
+
+   
     /**
      * @SWG\Post(
      *     path="api/account/profile",
@@ -66,6 +69,27 @@ class ProfileController extends Controller
         $complete_profile = $user->isCompleteProfile();
         return response()->json(['code' => 200,
             'data'=> ['complete_profile'=>$complete_profile, 'user'=>$user->toArray()]]);
+    }
+
+    public function image(Request $request){
+ 	$user = $request->user();
+	$request_data = $request->all();
+        $request_data['uid'] = $user->id; 
+//        if($validator->fails()) {
+ //             return response()->json(['code'=>400, 'errors'=> $validator->errors(),
+   //                                 'message'=>'Some fields are missing or wrong']);
+     //    }
+	$image = Image::where('uid',$user->id)->where('num',$request_data['num'])->first();
+
+	if(!$image){
+		$imgs = Image::create($request_data);
+		$imgs->save();
+		}else{
+		$image->image = $request_data['image'];
+		$image->save();
+	}
+			
+	 return response()->json(['code' => 200, 'data' => $user->toProfileArray()]);	
     }
     /**
      * @SWG\Get(
