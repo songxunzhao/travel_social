@@ -1,0 +1,17 @@
+<html>
+<body>
+<script>
+	function Class(label)
+	{
+		var self = this;
+		self.label = label;
+		document.body.addEventListener('click', function(){
+			console.log(self);
+		});
+		return this;
+	}
+	var class1 = new Class('123');
+	var class2 = new Class('1332');
+</script>
+</body>
+</html>
